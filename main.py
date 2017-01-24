@@ -23,16 +23,10 @@ class MainHandler(webapp2.RequestHandler):
 
         message = 'Hello World!!'
         encmsg = caesar.encrypt(message, 13)
-        toprint = """
-        <form>
-            <textarea>
-            
-            </textarea>
-            <br>
-            <input type='submit'/>
-        </form>
-        """
-        self.response.write(toprint)
+        textarea = "<textarea>" + encmsg + "</textarea><br><input type='submit'/>"
+        form = "<form>" + textarea + "</form>"
+
+        self.response.write(form)
 
 app = webapp2.WSGIApplication([
     ('/', MainHandler)
